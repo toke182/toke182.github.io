@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title></title>
+		<script src='http://code.createjs.com/createjs-2013.02.12.min.js'></script>
+		<script>
+			function preloadAudio() {
+				console.log("preloadAudio");
+				createjs.Sound.registerSound("sounds/sleepwalking.mp3", "sound");
+				console.log(createjs.Sound);
+				createjs.Sound.addEventListener("loadComplete", handleComplete);
+			}
+
+			function handleComplete(event) {
+				console.log("Complete preload");
+				var button = document.getElementById("myButton");
+
+				button.addEventListener("click", playAudio);
+			}
+
+			function playAudio(event) {
+				console.log("playAudio");
+				createjs.Sound.play("sound");
+			}
+
+		</script>
+	</head>
+	<body onload="preloadAudio()">
+		<button id="myButton"> TEST </button>
+	</body>
+</html>
